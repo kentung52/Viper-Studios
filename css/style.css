@@ -182,8 +182,8 @@
 }
 
 .carousel-control-prev {
-    width: 90px;
-    height: 60px;
+    width: 50px;
+    height: 40px;
     position: absolute;
     top: 50%;
     left: 0;
