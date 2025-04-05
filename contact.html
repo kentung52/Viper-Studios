@@ -213,19 +213,19 @@
                         <div class="col-lg-6 wow fadeIn" data-wow-delay=".5s">
                             <div class="p-5 rounded contact-form">
                                 <div class="mb-4">
-                                    <input class="form-control border-0 py-3" type="text" id="nameText" name="Name" value size="30" placeholder="姓名" required>
+                                    <input class="form-control border-0 py-3" type="text" id="nameText" name="Name" value size="30" placeholder="姓名" >
                                 </div>
                                 <div class="mb-4">
-                                    <input class="form-control border-0 py-3" type="email" id="emailText" name="Email" value size="30" placeholder="Email" required>
+                                    <input class="form-control border-0 py-3" type="email" id="emailText" name="Email" value size="30" placeholder="Email" >
                                 </div>
                                 <div class="mb-4">
-                                    <input class="form-control border-0 py-3" type="phone" id="phoneText" name="Phone" value size="15"  placeholder="連絡電話" required>
+                                    <input class="form-control border-0 py-3" type="phone" id="phoneText" name="Phone" value size="15"  placeholder="連絡電話" >
                                 </div>
                                 <div class="mb-4">
                                     <textarea id="bodyText" name="your-message" class="w-100 form-control border-0 py-3" rows="6" cols="10" placeholder="您的訊息"></textarea>
                                 </div>
                                 <div class="text-start">
-                                    <button class="btn bg-primary text-white py-3 px-5" name="submit" type="button" onclick="alert('記得送出郵件喔，我們會盡快回復您'); submitHandler();">寄送訊息</button>
+                                    <button class="btn bg-primary text-white py-3 px-5" name="submit" type="button" onclick="alert('記得送出郵件喔，我們會盡快回復您'); submitHandler(); javascript:window.location.reload()">寄送訊息</button>
                                     <a id="mailTo"></a>
                                 </div>
                             </div>
