@@ -108,3 +108,46 @@
 })(jQuery);
 
 
+
+
+    function handleSubmit(event) {
+      // 表單驗證失敗時會自動被瀏覽器攔下，不會執行這裡
+      event.preventDefault();
+  
+      // 如果驗證失敗（雖然通常不會執行到這行）
+      if (!event.target.checkValidity()) {
+        return false;
+      }
+  
+      alert('記得送出郵件喔，我們會盡快回復您');
+      submitHandler();
+  
+      // 如果你真的要重新載入頁面可以放這行
+      // setTimeout(() => window.location.reload(), 1000);
+  
+      return false; // 防止預設送出
+    }
+  
+    function submitHandler() {
+      var to = "ken4506@gmail.com";
+      var title = "ViperStudio-顧客訊息";
+      var email = emailText.value;
+      var phone = phoneText.value;
+  
+      var body = "姓名：" + nameText.value + '%0A%0A';
+      body += "連絡電話：" + phone + '%0A%0A';
+      body += "Email：" + email + '%0A%0A';
+      body += "顧客訊息: " + bodyText.value + '%0A%0A%0A';
+  
+      mailTo.href = "mailto:" + to + "?subject=" + title + "&body=" + body;
+      mailTo.click();
+    }
+  
+    // 如果你有要初始化表單，可以保留這段
+    function init() {
+      nameText.value = '';
+      emailText.value = '';
+      phoneText.value = '';
+      bodyText.value = '';
+    }
+ 
