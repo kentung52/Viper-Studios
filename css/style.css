@@ -300,8 +300,9 @@
 }
 
 .page-header {
-    background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url(../img/about/250rr.jpg) center center no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url(../img/Digital_Rain.png) center center no-repeat;
     background-size: cover;
+    opacity: 0.7;
 }
 
 .page-header .breadcrumb-item+.breadcrumb-item::before {
