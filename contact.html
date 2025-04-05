@@ -209,29 +209,27 @@
                             <div class="p-5 h-100 rounded contact-map">                                     
                                 <iframe class="rounded w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3747121.81958051!2d119.49964994999999!3d23.485750050000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346ef3065c07572f%3A0xe711f004bf9c5469!2z5Y-w54Gj!5e0!3m2!1szh-TW!2stw!4v1743833052833!5m2!1szh-TW!2stw" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                          
                             </div>
-                        </div>                        
-                        <form onsubmit="return handleSubmit(event)">
-                            <div class="col-lg-6 wow fadeIn" data-wow-delay=".5s">
-                              <div class="p-5 rounded contact-form">
-                                <div class="mb-4">
-                                  <input class="form-control border-0 py-3" type="text" id="nameText" name="Name" size="30" placeholder="姓名" required>
-                                </div>
-                                <div class="mb-4">
-                                  <input class="form-control border-0 py-3" type="email" id="emailText" name="Email" size="30" placeholder="Email" required>
-                                </div>
-                                <div class="mb-4">
-                                  <input class="form-control border-0 py-3" type="tel" id="phoneText" name="Phone" size="15" pattern="[0-9]*" inputmode="numeric" placeholder="連絡電話" required>
-                                </div>
-                                <div class="mb-4">
-                                  <textarea id="bodyText" name="your-message" class="w-100 form-control border-0 py-3" rows="6" cols="10" placeholder="您的訊息"></textarea>
-                                </div>
-                                <div class="text-start">
-                                  <button class="btn bg-primary text-white py-3 px-5" name="submit" type="submit">寄送訊息</button>
-                                  <a id="mailTo"></a>
-                                </div>
+                        </div>                  
+                        <div class="col-lg-6 wow fadeIn" data-wow-delay=".5s">
+                            <div class="p-5 rounded contact-form">
+                              <div class="mb-4">
+                                <input class="form-control border-0 py-3" type="text" id="nameText" name="Name" size="30" placeholder="姓名" required>
+                              </div>
+                              <div class="mb-4">
+                                <input class="form-control border-0 py-3" type="email" id="emailText" name="Email" size="30" placeholder="Email" required>
+                              </div>
+                              <div class="mb-4">
+                                <input class="form-control border-0 py-3" type="tel" id="phoneText" name="Phone" size="15" pattern="[0-9]*" inputmode="numeric" placeholder="連絡電話" required>
+                              </div>
+                              <div class="mb-4">
+                                <textarea id="bodyText" name="your-message" class="w-100 form-control border-0 py-3" rows="6" cols="10" placeholder="您的訊息"></textarea>
+                              </div>
+                              <div class="text-start">
+                                <button class="btn bg-primary text-white py-3 px-5" name="submit" type="button" onclick="submitHandler()">寄送訊息</button>
+                                <a id="mailTo"></a>
                               </div>
                             </div>
-                          </form>                      
+                          </div>                                              
                     </div>
                 </div>
             </div> 
@@ -319,45 +317,34 @@
 
 <!-- email start -->
 <script>
-    function handleSubmit(event) {
-      // 表單驗證失敗時會自動被瀏覽器攔下，不會執行這裡
-      event.preventDefault();
+    function submitHandler() {
+      // 自己檢查必填欄位
+      const name = nameText.value.trim();
+      const email = emailText.value.trim();
+      const phone = phoneText.value.trim();
   
-      // 如果驗證失敗（雖然通常不會執行到這行）
-      if (!event.target.checkValidity()) {
-        return false;
+      if (!name || !email || !phone) {
+        alert("請完整填寫姓名、Email 和連絡電話！");
+        return;
       }
   
+      // 通過驗證後執行寄送
       alert('記得送出郵件喔，我們會盡快回復您');
-      submitHandler();
   
-      // 如果你真的要重新載入頁面可以放這行
-      // setTimeout(() => window.location.reload(), 1000);
+      const to = "ken4506@gmail.com";
+      const title = "ViperStudio-顧客訊息";
   
-      return false; // 防止預設送出
-    }
-  
-    function submitHandler() {
-      var to = "ken4506@gmail.com";
-      var title = "ViperStudio-顧客訊息";
-      var email = emailText.value;
-      var phone = phoneText.value;
-  
-      var body = "姓名：" + nameText.value + '%0A%0A';
-      body += "連絡電話：" + phone + '%0A%0A';
-      body += "Email：" + email + '%0A%0A';
-      body += "顧客訊息: " + bodyText.value + '%0A%0A%0A';
+      const body = 
+        "姓名：" + name + '%0A%0A' +
+        "連絡電話：" + phone + '%0A%0A' +
+        "Email：" + email + '%0A%0A' +
+        "顧客訊息: " + bodyText.value + '%0A%0A';
   
       mailTo.href = "mailto:" + to + "?subject=" + title + "&body=" + body;
       mailTo.click();
-    }
   
-    // 如果你有要初始化表單，可以保留這段
-    function init() {
-      nameText.value = '';
-      emailText.value = '';
-      phoneText.value = '';
-      bodyText.value = '';
+      // 若要清空欄位，可加：
+      // nameText.value = emailText.value = phoneText.value = bodyText.value = '';
     }
   </script>
 	<!-- email end -->
