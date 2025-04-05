@@ -1823,7 +1823,15 @@ html {
   overflow: hidden; /* 避免元素超出邊界 */
 }
 
-.portfolio-img img {  
+/* 確保幻燈片可以水平置中 */
+.portfolio-img img {
+  width: 100%;  
+  display: block;
+  margin: 0 auto;
+}
+
+.portfolio-img iframe {
+  width: 100%;   
   display: block;
   margin: 0 auto;
 }
